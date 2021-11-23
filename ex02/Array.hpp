@@ -30,6 +30,11 @@ public:
 			throw std::out_of_range(" Array::operator[]: index >= len");
 		return _array[ i ];
 	}
+	const T&	operator[]( unsigned i ) const throw ( std::out_of_range )
+	{	if ( i >= _n )
+			throw std::out_of_range(" Array::operator[]: index >= len");
+		return _array[ i ];
+	}
 	unsigned	size() const
 	{	return _n;
 	}
