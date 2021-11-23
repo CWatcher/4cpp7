@@ -18,11 +18,11 @@ void	set( T& x, const T& y )
 {	x = y;
 }
 template < typename T >
-void test( Array< T > a )
+void test( Array< T > a, T filler )
 {
 	iter( a, print );
-	Array< int >	a2( a.size() * 3 );
-	iter( a2, set, 3 );
+	Array< T >	a2( a.size() * 3 );
+	iter( a2, set, filler );
 	a = a2;
 	iter( a, print );
 	std::cout << std::endl;
@@ -32,8 +32,8 @@ int	main( int argc, char* argv[] )
 {
 
 	if ( argc == 1 )
-	{	Array< int >	a0;
-		test( a0 );
+	{	Array< unsigned >	a0;
+		test( a0, -1U );
 		return 0;
 	}
 	std::stringstream	ss( argv[ 1 ]);
@@ -41,7 +41,9 @@ int	main( int argc, char* argv[] )
 	ss >> n;
 	try
 	{	Array< int >	a1( n );
-		test( a1 );
+		test( a1, 3 );
+		Array< std::string >	strings( n );
+		test( strings, std::string( "abc" ) );
 	}
 	catch( const std::exception& e )
 	{	std::cout << "This is the end: " << e.what() << std::endl;
