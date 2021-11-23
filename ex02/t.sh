@@ -4,9 +4,10 @@ make > /dev/null		\
 	&& echo make ok! 	\
 	|| exit 1
 
-set -v
 
+
+set -v
 ./aa -1
-./aa
-./aa 0
-./aa 10
+valgrind -q ./aa
+valgrind -q ./aa 0
+valgrind -q ./aa 2
