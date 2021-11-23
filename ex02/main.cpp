@@ -56,6 +56,7 @@ int	main( int argc, char* argv[] )
 		test( a1, 3 );
 		Array< std::string >	strings( n );
 		test( strings, std::string( "abc" ) );
+		std::cout << strings[ strings.size() ];
 	}
 	catch( const std::exception& e )
 	{	std::cout << "This is the end: " << e.what() << std::endl;
